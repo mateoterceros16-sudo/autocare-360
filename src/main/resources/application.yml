@@ -1,0 +1,29 @@
+# ============================================================
+# AutoCare 360 - configuración del backend
+# La contraseña NO se escribe aquí: se lee del archivo .env
+# (que está en .gitignore y no se sube a GitHub).
+# ============================================================
+spring:
+  application:
+    name: autocare-360
+  config:
+    import: optional:file:.env[.properties]
+  datasource:
+    url: jdbc:postgresql://localhost:5432/autocare360
+    username: autocare_admin
+    password: ${DB_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: autocare
+        format_sql: true
+
+server:
+  port: 9090
+
+logging:
+  level:
+    org.hibernate.SQL: debug
